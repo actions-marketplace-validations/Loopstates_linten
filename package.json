@@ -1,0 +1,33 @@
+{
+  "name": "linten",
+  "version": "1.0.0",
+  "description": "Official GitHub Action for Linten: Spec v2 llms.txt auditor, link health checker, token budgeter, and companion compiler by Loopstates.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --outfile=dist/index.js"
+  },
+  "keywords": [
+    "actions",
+    "github-action",
+    "llms.txt",
+    "linter",
+    "validator",
+    "ai-agents",
+    "loopstates"
+  ],
+  "author": "Loopstates <hello@loopstates.com> (https://loopstates.com)",
+  "homepage": "https://loopstates.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Loopstates/linten.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.11.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.6.3"
+  }
+}

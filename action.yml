@@ -1,0 +1,54 @@
+name: 'Linten: Spec v2 llms.txt Auditor & Companion Compiler'
+description: 'Audit llms.txt syntax, probe link health, estimate AI token budgets, and compile companion archives in CI.'
+author: 'Loopstates'
+branding:
+  icon: 'check-circle'
+  color: 'purple'
+
+inputs:
+  path:
+    description: 'Path to the llms.txt file to audit'
+    required: false
+    default: './llms.txt'
+  check-links:
+    description: 'Probe declared documentation links for reachability (HTTP 200, redirects, 404s)'
+    required: false
+    default: 'true'
+  fail-on-broken-links:
+    description: 'Fail the action workflow if broken links are detected'
+    required: false
+    default: 'false'
+  fail-on-errors:
+    description: 'Fail the action workflow if Spec v2 syntax or structural errors are found'
+    required: false
+    default: 'true'
+  generate-full:
+    description: 'Compile the companion llms-full.txt archive from declared links'
+    required: false
+    default: 'false'
+  output-full:
+    description: 'Output destination path for the compiled llms-full.txt archive'
+    required: false
+    default: './llms-full.txt'
+  api-url:
+    description: 'Linten Cloud API base URL'
+    required: false
+    default: 'https://linten.apps.loopstates.com'
+
+outputs:
+  score:
+    description: 'Overall Spec v2 compliance quality score (0-100)'
+  status:
+    description: 'Audit status outcome (pass, warn, fail)'
+  total-links:
+    description: 'Total number of links detected'
+  broken-links:
+    description: 'Total number of broken links detected'
+  estimated-tokens:
+    description: 'Estimated AI token count'
+  full-archive-path:
+    description: 'Path where llms-full.txt was written (if generated)'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
